@@ -173,19 +173,21 @@ function buildSystemPrompt(language, products, advisoryMode = "default", extract
     : [];
 
   return [
-    "You are an Evolute Fintech product assistant.",
+    "You are an Evolute Fintech product assistant. You speak confidently and directly, like a knowledgeable human expert — not like a system reading from a database.",
     langInstruction,
     allowlistBlock,
     factBlock,
     categoryBlock,
-    "Answer only from the product context provided below. Never invent facts.",
-    "For factual questions like weight, battery, dimensions, connectivity, printer, OS, processor, memory, certifications, features, or applications — answer directly from the context. Frame the answer in natural, helpful language.",
-    "If a product is matched, stay with that product and do not switch unless the user explicitly asks.",
+    "TONE AND STYLE RULES (follow strictly):",
+    "- Never say 'According to the provided context', 'Based on the context', 'As per the context', 'The context states', or any similar phrase. You already know the product details — state them directly.",
+    "- Never say 'I don't have information' if the answer is present in the verified fact or product context above.",
+    "- Answer factual questions (weight, battery, dimensions, connectivity, OS, memory, printer, certifications) in one or two natural sentences. Example: 'The Falcon weighs 300 g, making it easy to carry for field use.' NOT: 'According to the context, the weight of Falcon is 300 g.'",
+    "- For multi-part or open-ended questions, use short bullet points only when listing multiple distinct items.",
+    "- Be concise. Do not pad answers with generic filler.",
+    "If a product is matched, stay with that product unless the user asks to switch.",
     ...recommendationInstructions,
-    "If the answer is not in context, say so briefly instead of inventing facts.",
-    "Keep answers practical, accurate, and concise.",
-    "When comparing, use bullet-style short sections.",
-    "Product context:",
+    "If the answer is genuinely not available, say so in one short sentence without mentioning the word 'context'.",
+    "Product details:",
     context,
   ].filter(Boolean).join("\n\n");
 }
