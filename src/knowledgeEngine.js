@@ -1,4 +1,3 @@
-
 const API_URL = import.meta.env.VITE_CHAT_API_URL || "";
 
 const T = {
@@ -577,46 +576,136 @@ const PRODUCTS = [
 ];
 
 const EXTRA_ALIASES = {
-  escan_l0: ["ईस्कैन एल0", "ई-स्कैन एल0", "एस्कैन एल0", "इस्कैन एल0"],
-  escan_l1: ["ईस्कैन एल1", "ई-स्कैन एल1", "एस्कैन एल1", "इस्कैन एल1"],
-  identi5: ["आइडेंटी5", "आयडेंटी5", "आइडेंटी 5", "आयडेंटी 5"],
-  falcon: ["फाल्कन", "फैल्कन"],
-  leopro: ["लियोप्रो", "लिओप्रो", "लेओप्रो"],
-  leopard: ["लेपर्ड", "लियोपर्ड", "लिओपर्ड"],
-  leopos_bio: ["लियोपोस बायो", "लिओपोस बायो", "लियो पीओएस बायो", "बायो पीओएस", "लेओपोस बायो"],
-  leopos_smart: ["लियोपोस स्मार्ट", "लिओपोस स्मार्ट", "लियो पीओएस स्मार्ट", "स्मार्ट पीओएस", "लेओपोस स्मार्ट"],
-  unipos_a5: ["यूनीपोस ए5", "युनीपोस ए5", "युनी POS A5", "यूनी POS A5", "ए5 पीओएस"],
-  ampli5: ["एम्प्ली5", "एम्प्ली5", "एम्प्ली 5", "साउंड बॉक्स", "साउंडबॉक्स", "यूपीआई साउंड बॉक्स"],
-  impress_201: ["इम्प्रेस प्लस", "इम्प्रेस+", "इम्प्रेस 201", "इम्प्रेस प्लस 201"],
-  impress_202: ["इम्प्रेस 202", "इम्प्रेस प्लस 202"],
-  impress_pro_301: ["इम्प्रेस प्रो", "इम्प्रेस प्रो 301"],
-  impress_pro_302: ["इम्प्रेस प्रो 302"],
-  geosync: ["जियोसिंक", "जीयोसिंक", "जिओसिंक", "जियो सिंक"],
+  escan_l0: ["ईस्कैन एल0", "ई-स्कैन एल0", "एस्कैन एल0", "इस्कैन एल0", "ईस्कॅन एल0", "ई-स्कॅन एल0", "escan l zero", "escan zero"],
+  escan_l1: ["ईस्कैन एल1", "ई-स्कैन एल1", "एस्कैन एल1", "इस्कैन एल1", "ईस्कॅन एल1", "ई-स्कॅन एल1", "escan l one", "escan one"],
+  identi5: ["आइडेंटी5", "आयडेंटी5", "आइडेंटी 5", "आयडेंटी 5", "आइडेंटी फाइव", "आयडेंटी फाइव्ह", "identi five", "identity 5"],
+  falcon: ["फाल्कन", "फैल्कन", "फॅलकन", "फाल्कॉन"],
+  leopro: ["लियोप्रो", "लिओप्रो", "लेओप्रो", "लियो प्रो", "लिओ प्रो"],
+  leopard: ["लेपर्ड", "लियोपर्ड", "लिओपर्ड", "लियोपार्ड", "लिओपार्ड"],
+  leopos_bio: ["लियोपोस बायो", "लिओपोस बायो", "लियो पीओएस बायो", "बायो पीओएस", "लेओपोस बायो", "लिओ पीओएस बायो", "bio pos terminal"],
+  leopos_smart: ["लियोपोस स्मार्ट", "लिओपोस स्मार्ट", "लियो पीओएस स्मार्ट", "स्मार्ट पीओएस", "लेओपोस स्मार्ट", "लिओ पीओएस स्मार्ट"],
+  unipos_a5: ["यूनीपोस ए5", "युनीपोस ए5", "युनी POS A5", "यूनी POS A5", "ए5 पीओएस", "युनीपोस", "यूनीपोस", "unipos", "uni pos a5"],
+  ampli5: ["एम्प्ली5", "एम्प्ली 5", "साउंड बॉक्स", "साउंडबॉक्स", "यूपीआई साउंड बॉक्स", "अॅम्प्ली5", "साउंड बॉक्स", "यूपीआई साउंडबॉक्स", "ampli 5"],
+  impress_201: ["इम्प्रेस प्लस", "इम्प्रेस+", "इम्प्रेस 201", "इम्प्रेस प्लस 201", "इम्प्रेस+ 201", "impress 201", "impress plus 201"],
+  impress_202: ["इम्प्रेस 202", "इम्प्रेस प्लस 202", "इम्प्रेस+ 202", "impress 202", "impress plus 202"],
+  impress_pro_301: ["इम्प्रेस प्रो", "इम्प्रेस प्रो 301", "इम्प्रेस प्रो 3 इंच", "impress pro 301", "impress pro three"],
+  impress_pro_302: ["इम्प्रेस प्रो 302", "impress pro 302"],
+  geosync: ["जियोसिंक", "जीयोसिंक", "जिओसिंक", "जियो सिंक", "जिओसिंक", "जियोसिंक जीपीएस", "geo sync"],
 };
 
 const TOPIC_SUGGESTIONS = [
   {
-    patterns: ["fingerprint", "scanner", "biometric", "aadhaar", "mosip", "फिंगरप्रिंट", "बायोमेट्रिक", "आधार", "फिंगरप्रिंट", "बायोमेट्रिक"],
+    patterns: [
+      "fingerprint", "scanner", "biometric", "aadhaar", "mosip",
+      "फिंगरप्रिंट", "बायोमेट्रिक", "आधार", "स्कैनर", "बायोमेट्रिक स्कैनर",
+      "फिंगरप्रिंट स्कॅनर", "बायोमेट्रिक स्कॅनर", "आधार स्कॅनर",
+    ],
     productIds: ["escan_l1", "identi5", "escan_l0"],
   },
   {
-    patterns: ["micro atm", "aeps", "cash withdrawal", "doorstep banking", "माइक्रो एटीएम", "एईपीएस", "कॅश विथड्रॉल", "डोअरस्टेप बैंकिंग", "मायक्रो एटीएम"],
+    patterns: [
+      "micro atm", "aeps", "cash withdrawal", "doorstep banking",
+      "माइक्रो एटीएम", "एईपीएस", "डोरस्टेप बैंकिंग", "कैश निकालना", "नकद निकासी",
+      "मायक्रो एटीएम", "एईपीएस मशीन", "दारोदार बँकिंग", "रोख काढणे",
+    ],
     productIds: ["falcon", "leopard", "leopro"],
   },
   {
-    patterns: ["pos", "payment terminal", "merchant", "retail payments", "पेमेंट", "पीओएस", "merchant", "payment"],
+    patterns: [
+      "pos", "payment terminal", "merchant", "retail payments", "point of sale",
+      "पीओएस", "पेमेंट टर्मिनल", "मर्चेंट", "रिटेल पेमेंट", "दुकानदार",
+      "पीओएस टर्मिनल", "पेमेंट मशीन", "व्यापारी", "विक्रेता",
+    ],
     productIds: ["leopos_bio", "leopos_smart", "unipos_a5"],
   },
   {
-    patterns: ["sound box", "soundbox", "upi", "qr", "साउंड बॉक्स", "यूपीआई", "क्यूआर"],
+    patterns: [
+      "sound box", "soundbox", "upi", "qr payment", "payment alert",
+      "साउंड बॉक्स", "यूपीआई", "क्यूआर", "पेमेंट अलर्ट", "पेमेंट आवाज",
+      "साउंड बॉक्स", "यूपीआई साउंडबॉक्स", "पेमेंट आवाज",
+    ],
     productIds: ["ampli5"],
   },
   {
-    patterns: ["printer", "receipt", "thermal", "प्रिंटर", "रसीद", "थर्मल"],
+    patterns: [
+      "printer", "receipt", "thermal printer", "bluetooth printer",
+      "प्रिंटर", "रसीद", "थर्मल प्रिंटर", "ब्लूटूथ प्रिंटर", "मोबाइल प्रिंटर",
+      "प्रिंटर", "पावती", "थर्मल प्रिंटर", "ब्लूटूथ प्रिंटर",
+    ],
     productIds: ["impress_201", "impress_202", "impress_pro_301", "impress_pro_302"],
   },
   {
-    patterns: ["gps", "gnss", "navic", "location", "जियोटैग", "जीपीएस", "लोकेशन"],
+    patterns: [
+      "gps", "gnss", "navic", "location", "geotagging",
+      "जीपीएस", "जियोटैग", "लोकेशन", "नेविगेशन", "जीपीएस रिसीवर",
+      "जीपीएस", "जियोटॅग", "लोकेशन", "नेव्हिगेशन", "जीपीएस रिसीव्हर",
+    ],
+    productIds: ["geosync"],
+  },
+];
+
+// CATEGORY_FILTERS — strict category boundaries used for recommendation queries.
+// When the user explicitly asks about a category (e.g. "best micro ATM"), candidates
+// are locked to only the products in that category, preventing cross-category mixing.
+const CATEGORY_FILTERS = [
+  {
+    id: "fingerprint_sensor",
+    label: { en: "fingerprint scanner", hi: "फिंगरप्रिंट स्कैनर", mr: "फिंगरप्रिंट स्कॅनर" },
+    patterns: {
+      en: ["fingerprint scanner", "fingerprint sensor", "fingerprint module", "fingerprint device", "biometric scanner", "escan", "aadhaar scanner", "l0 scanner", "l1 scanner"],
+      hi: ["फिंगरप्रिंट स्कैनर", "फिंगरप्रिंट सेंसर", "बायोमेट्रिक स्कैनर", "ई-स्कैन", "ईस्कैन", "फिंगरप्रिंट डिवाइस", "आधार स्कैनर"],
+      mr: ["फिंगरप्रिंट स्कॅनर", "फिंगरप्रिंट सेन्सर", "बायोमेट्रिक स्कॅनर", "ई-स्कॅन", "फिंगरप्रिंट डिव्हाइस", "आधार स्कॅनर"],
+    },
+    productIds: ["escan_l0", "escan_l1", "identi5"],
+  },
+  {
+    id: "micro_atm",
+    label: { en: "Micro ATM", hi: "Micro ATM", mr: "Micro ATM" },
+    patterns: {
+      en: ["micro atm", "microatm", "micro-atm", "aeps machine", "aeps device", "aeps terminal", "cash withdrawal machine"],
+      hi: ["माइक्रो एटीएम", "मायक्रो एटीएम", "माइक्रो-एटीएम", "एईपीएस मशीन", "एटीएम मशीन", "कैश मशीन"],
+      mr: ["मायक्रो एटीएम", "माइक्रो एटीएम", "मायक्रो-एटीएम", "एईपीएस मशीन", "कॅश मशीन", "एटीएम मशीन"],
+    },
+    productIds: ["falcon", "leopard", "leopro"],
+  },
+  {
+    id: "pos",
+    label: { en: "POS terminal", hi: "POS टर्मिनल", mr: "POS टर्मिनल" },
+    patterns: {
+      en: ["pos terminal", "pos device", "pos machine", "payment terminal", "point of sale", "smart pos", "bio pos", "android pos"],
+      hi: ["पीओएस टर्मिनल", "पेमेंट टर्मिनल", "पीओएस मशीन", "स्मार्ट पीओएस", "पीओएस डिवाइस"],
+      mr: ["पीओएस टर्मिनल", "पेमेंट टर्मिनल", "पीओएस मशीन", "स्मार्ट पीओएस", "पीओएस डिव्हाइस"],
+    },
+    productIds: ["leopos_bio", "leopos_smart", "unipos_a5"],
+  },
+  {
+    id: "soundbox",
+    label: { en: "soundbox", hi: "साउंड बॉक्स", mr: "साउंड बॉक्स" },
+    patterns: {
+      en: ["soundbox", "sound box", "upi soundbox", "qr soundbox", "payment soundbox", "merchant soundbox"],
+      hi: ["साउंड बॉक्स", "साउंडबॉक्स", "यूपीआई साउंड बॉक्स", "पेमेंट साउंड बॉक्स"],
+      mr: ["साउंड बॉक्स", "साउंडबॉक्स", "यूपीआई साउंड बॉक्स", "पेमेंट साउंड बॉक्स"],
+    },
+    productIds: ["ampli5"],
+  },
+  {
+    id: "printer",
+    label: { en: "thermal printer", hi: "थर्मल प्रिंटर", mr: "थर्मल प्रिंटर" },
+    patterns: {
+      en: ["thermal printer", "receipt printer", "mobile printer", "bluetooth printer", "portable printer"],
+      hi: ["थर्मल प्रिंटर", "रसीद प्रिंटर", "मोबाइल प्रिंटर", "ब्लूटूथ प्रिंटर", "पोर्टेबल प्रिंटर"],
+      mr: ["थर्मल प्रिंटर", "रसीद प्रिंटर", "मोबाइल प्रिंटर", "ब्लूटूथ प्रिंटर", "पोर्टेबल प्रिंटर"],
+    },
+    productIds: ["impress_201", "impress_202", "impress_pro_301", "impress_pro_302"],
+  },
+  {
+    id: "gps",
+    label: { en: "GPS receiver", hi: "GPS रिसीवर", mr: "GPS रिसीव्हर" },
+    patterns: {
+      en: ["gps receiver", "gnss receiver", "gps device", "geosync", "geotagging device"],
+      hi: ["जीपीएस रिसीवर", "जियोसिंक", "जीपीएस डिवाइस", "जीपीएस"],
+      mr: ["जीपीएस रिसीव्हर", "जियोसिंक", "जीपीएस डिव्हाइस", "जीपीएस"],
+    },
     productIds: ["geosync"],
   },
 ];
@@ -676,28 +765,28 @@ const STOP_WORDS = {
 };
 
 const INTENTS = [
-  { id: "compare", phrases: { en: ["compare", "difference", "vs", "versus", "better than"], hi: ["compare", "अंतर", "फर्क", "vs", "versus", "बेहतर"], mr: ["compare", "फरक", "vs", "versus", "better"] } },
-  { id: "recommend", phrases: { en: ["best", "recommended", "recommend", "which one should i choose", "which is best", "suitable", "good for me"], hi: ["best", "recommend", "recommended", "कौन सा बेहतर", "सबसे अच्छा", "सुझाव", "कौन सा लें"], mr: ["best", "recommend", "recommended", "सर्वोत्तम", "कोणता चांगला", "सुचवा", "कोणता घ्यावा"] } },
-  { id: "price", phrases: { en: ["price", "cost", "pricing", "how much", "quote"], hi: ["price", "कीमत", "दाम", "cost", "quote"], mr: ["price", "किंमत", "दर", "cost", "quote"] } },
-  { id: "features", phrases: { en: ["features", "key features", "highlights", "main features", "capabilities"], hi: ["features", "मुख्य फीचर्स", "विशेषताएं", "हाइलाइट्स"], mr: ["features", "मुख्य फीचर्स", "वैशिष्ट्ये", "हायलाइट्स"] } },
-  { id: "applications", phrases: { en: ["applications", "use cases", "who is it for", "industries", "where to use"], hi: ["उपयोग", "use cases", "किनके लिए", "कहां use", "industries"], mr: ["वापर", "use cases", "कोणासाठी", "कुठे वापरायचे"] } },
-  { id: "os", phrases: { en: ["operating system", "os", "android", "software"], hi: ["operating system", "os", "android", "सॉफ्टवेयर"], mr: ["operating system", "os", "android", "software"] } },
-  { id: "processor", phrases: { en: ["processor", "cpu", "chip", "performance", "speed"], hi: ["processor", "cpu", "chip", "performance", "speed", "प्रोसेसर"], mr: ["processor", "cpu", "chip", "performance", "speed", "प्रोसेसर"] } },
-  { id: "display", phrases: { en: ["display", "screen", "screen size", "resolution"], hi: ["display", "screen", "screen size", "resolution", "डिस्प्ले"], mr: ["display", "screen", "screen size", "resolution", "डिस्प्ले"] } },
-  { id: "camera", phrases: { en: ["camera", "front camera", "rear camera"], hi: ["camera", "front camera", "rear camera", "कैमरा"], mr: ["camera", "front camera", "rear camera", "कॅमेरा"] } },
-  { id: "memory", phrases: { en: ["memory", "ram", "storage", "rom"], hi: ["memory", "ram", "storage", "rom", "मेमोरी"], mr: ["memory", "ram", "storage", "rom", "मेमरी"] } },
-  { id: "biometric", phrases: { en: ["biometric", "fingerprint", "iris", "face auth", "aadhaar", "mosip"], hi: ["biometric", "fingerprint", "iris", "face auth", "aadhaar", "mosip", "बायोमेट्रिक"], mr: ["biometric", "fingerprint", "iris", "face auth", "aadhaar", "mosip", "बायोमेट्रिक"] } },
-  { id: "payments", phrases: { en: ["payment", "payments", "upi", "nfc", "aeps", "merchant payments"], hi: ["payment", "payments", "upi", "nfc", "aeps", "पेमेंट"], mr: ["payment", "payments", "upi", "nfc", "aeps", "पेमेंट"] } },
-  { id: "connectivity", phrases: { en: ["connectivity", "wifi", "bluetooth", "4g", "5g", "usb", "network"], hi: ["connectivity", "wifi", "bluetooth", "4g", "5g", "usb", "network", "कनेक्टिविटी"], mr: ["connectivity", "wifi", "bluetooth", "4g", "5g", "usb", "network", "कनेक्टिव्हिटी"] } },
-  { id: "battery", phrases: { en: ["battery", "battery life", "mah", "charging"], hi: ["battery", "battery life", "mah", "charging", "बैटरी"], mr: ["battery", "battery life", "mah", "charging", "बॅटरी"] } },
-  { id: "printer", phrases: { en: ["printer", "printing", "receipt", "thermal printer", "print speed"], hi: ["printer", "printing", "receipt", "thermal printer", "print speed", "प्रिंटर"], mr: ["printer", "printing", "receipt", "thermal printer", "print speed", "प्रिंटर"] } },
-  { id: "cards", phrases: { en: ["card", "card reader", "emv", "magnetic", "ic card", "nfc card"], hi: ["card", "card reader", "emv", "magnetic", "ic card"], mr: ["card", "card reader", "emv", "magnetic", "ic card"] } },
-  { id: "dimensions", phrases: { en: ["dimensions", "size", "form factor", "how big"], hi: ["dimensions", "size", "डायमेंशन्स"], mr: ["dimensions", "size", "डायमेन्शन्स"] } },
-  { id: "weight", phrases: { en: ["weight", "how heavy", "lightweight"], hi: ["weight", "how heavy", "वज़न"], mr: ["weight", "how heavy", "वजन"] } },
-  { id: "environment", phrases: { en: ["temperature", "humidity", "durability", "ip", "environment"], hi: ["temperature", "humidity", "durability", "ip", "environment"], mr: ["temperature", "humidity", "durability", "ip", "environment"] } },
-  { id: "certifications", phrases: { en: ["certification", "certifications", "certified", "compliance"], hi: ["certification", "certifications", "certified", "compliance", "सर्टिफिकेशन"], mr: ["certification", "certifications", "certified", "compliance", "सर्टिफिकेशन"] } },
-  { id: "integration", phrases: { en: ["sdk", "integration", "api", "developer", "protocol"], hi: ["sdk", "integration", "api", "developer", "protocol"], mr: ["sdk", "integration", "api", "developer", "protocol"] } },
-  { id: "overview", phrases: { en: ["what is", "tell me about", "overview", "summary", "about"], hi: ["क्या है", "बताओ", "overview", "summary", "about"], mr: ["काय आहे", "सांगा", "overview", "summary", "about"] } },
+  { id: "compare", phrases: { en: ["compare", "difference", "vs", "versus", "better than", "which is better"], hi: ["compare", "अंतर", "फर्क", "vs", "versus", "बेहतर", "तुलना", "दोनों में", "कौन बेहतर"], mr: ["compare", "फरक", "vs", "versus", "तुलना", "दोन्हींमध्ये", "कोणते चांगले"] } },
+  { id: "recommend", phrases: { en: ["best", "recommended", "recommend", "which one should i choose", "which is best", "suitable", "good for me", "suggest", "advise", "which one"], hi: ["best", "recommend", "recommended", "कौन सा बेहतर", "सबसे अच्छा", "सुझाव", "कौन सा लें", "कौन सा", "बढ़िया", "सही", "उचित", "कौन सा खरीदें", "बेस्ट", "सुझाइए", "कौन ठीक रहेगा"], mr: ["best", "recommend", "recommended", "सर्वोत्तम", "कोणता चांगला", "सुचवा", "कोणता घ्यावा", "कोणते", "योग्य", "कोणता बरा", "सुचवा", "सांगा कोणता", "उत्तम"] } },
+  { id: "price", phrases: { en: ["price", "cost", "pricing", "how much", "quote", "rate"], hi: ["price", "कीमत", "दाम", "cost", "quote", "कितने का", "रेट", "मूल्य", "कितना है"], mr: ["price", "किंमत", "दर", "cost", "quote", "किती रुपये", "रेट", "मूल्य", "किती आहे"] } },
+  { id: "features", phrases: { en: ["features", "key features", "highlights", "main features", "capabilities", "specifications", "specs"], hi: ["features", "मुख्य फीचर्स", "विशेषताएं", "हाइलाइट्स", "खूबियां", "स्पेसिफिकेशन", "क्या क्या है इसमें"], mr: ["features", "मुख्य फीचर्स", "वैशिष्ट्ये", "हायलाइट्स", "गुण", "स्पेसिफिकेशन", "काय काय आहे यात"] } },
+  { id: "applications", phrases: { en: ["applications", "use cases", "who is it for", "industries", "where to use", "usage"], hi: ["उपयोग", "use cases", "किनके लिए", "कहां use", "industries", "किसके लिए", "कहाँ काम आता है", "कौन उपयोग करें"], mr: ["वापर", "use cases", "कोणासाठी", "कुठे वापरायचे", "कोण वापरतो", "कुठे उपयुक्त"] } },
+  { id: "os", phrases: { en: ["operating system", "os", "android", "software platform"], hi: ["operating system", "os", "android", "सॉफ्टवेयर", "ऑपरेटिंग सिस्टम"], mr: ["operating system", "os", "android", "सॉफ्टवेअर", "ऑपरेटिंग सिस्टम"] } },
+  { id: "processor", phrases: { en: ["processor", "cpu", "chip", "performance", "speed", "ghz"], hi: ["processor", "cpu", "chip", "performance", "speed", "प्रोसेसर", "चिप"], mr: ["processor", "cpu", "chip", "performance", "speed", "प्रोसेसर", "चिप"] } },
+  { id: "display", phrases: { en: ["display", "screen", "screen size", "resolution", "inch"], hi: ["display", "screen", "screen size", "resolution", "डिस्प्ले", "स्क्रीन", "इंच"], mr: ["display", "screen", "screen size", "resolution", "डिस्प्ले", "स्क्रीन", "इंच"] } },
+  { id: "camera", phrases: { en: ["camera", "front camera", "rear camera", "megapixel", "mp"], hi: ["camera", "front camera", "rear camera", "कैमरा", "मेगापिक्सेल"], mr: ["camera", "front camera", "rear camera", "कॅमेरा", "मेगापिक्सेल"] } },
+  { id: "memory", phrases: { en: ["memory", "ram", "storage", "rom", "gb"], hi: ["memory", "ram", "storage", "rom", "मेमोरी", "स्टोरेज"], mr: ["memory", "ram", "storage", "rom", "मेमरी", "स्टोरेज"] } },
+  { id: "biometric", phrases: { en: ["biometric", "fingerprint", "iris", "face auth", "aadhaar", "mosip", "authentication"], hi: ["biometric", "fingerprint", "iris", "face auth", "aadhaar", "mosip", "बायोमेट्रिक", "आधार", "फिंगरप्रिंट"], mr: ["biometric", "fingerprint", "iris", "face auth", "aadhaar", "mosip", "बायोमेट्रिक", "आधार", "फिंगरप्रिंट"] } },
+  { id: "payments", phrases: { en: ["payment", "payments", "upi", "nfc", "aeps", "merchant payments", "card payment"], hi: ["payment", "payments", "upi", "nfc", "aeps", "पेमेंट", "भुगतान", "कार्ड पेमेंट"], mr: ["payment", "payments", "upi", "nfc", "aeps", "पेमेंट", "पैसे", "कार्ड पेमेंट"] } },
+  { id: "connectivity", phrases: { en: ["connectivity", "wifi", "bluetooth", "4g", "5g", "usb", "network", "sim"], hi: ["connectivity", "wifi", "bluetooth", "4g", "5g", "usb", "network", "कनेक्टिविटी", "नेटवर्क", "सिम"], mr: ["connectivity", "wifi", "bluetooth", "4g", "5g", "usb", "network", "कनेक्टिव्हिटी", "नेटवर्क", "सिम"] } },
+  { id: "battery", phrases: { en: ["battery", "battery life", "mah", "charging", "backup"], hi: ["battery", "battery life", "mah", "charging", "बैटरी", "चार्जिंग", "बैकअप", "बैटरी कितनी"], mr: ["battery", "battery life", "mah", "charging", "बॅटरी", "चार्जिंग", "बॅकअप", "बॅटरी किती"] } },
+  { id: "printer", phrases: { en: ["printer", "printing", "receipt", "thermal printer", "print speed", "lps"], hi: ["printer", "printing", "receipt", "thermal printer", "print speed", "प्रिंटर", "प्रिंटिंग", "रसीद"], mr: ["printer", "printing", "receipt", "thermal printer", "print speed", "प्रिंटर", "प्रिंटिंग", "पावती"] } },
+  { id: "cards", phrases: { en: ["card", "card reader", "emv", "magnetic", "ic card", "nfc card", "swipe"], hi: ["card", "card reader", "emv", "magnetic", "ic card", "कार्ड", "स्वाइप"], mr: ["card", "card reader", "emv", "magnetic", "ic card", "कार्ड", "स्वाइप"] } },
+  { id: "dimensions", phrases: { en: ["dimensions", "size", "form factor", "how big", "length", "width", "height"], hi: ["dimensions", "size", "डायमेंशन्स", "साइज", "कितना बड़ा", "लंबाई", "चौड़ाई"], mr: ["dimensions", "size", "डायमेन्शन्स", "साईज", "किती मोठे", "लांबी", "रुंदी"] } },
+  { id: "weight", phrases: { en: ["weight", "how heavy", "lightweight", "how much does it weigh", "grams", "kg"], hi: ["weight", "how heavy", "वज़न", "कितना वजन", "ग्राम", "कितना भारी", "भार"], mr: ["weight", "how heavy", "वजन", "किती वजन", "ग्रॅम", "किती जड", "भार"] } },
+  { id: "environment", phrases: { en: ["temperature", "humidity", "durability", "ip rating", "environment", "waterproof", "rugged"], hi: ["temperature", "humidity", "durability", "ip", "environment", "टेम्परेचर", "नमी", "मजबूती"], mr: ["temperature", "humidity", "durability", "ip", "environment", "तापमान", "आर्द्रता", "मजबुती"] } },
+  { id: "certifications", phrases: { en: ["certification", "certifications", "certified", "compliance", "approved"], hi: ["certification", "certifications", "certified", "compliance", "सर्टिफिकेशन", "सर्टिफाइड", "प्रमाण"], mr: ["certification", "certifications", "certified", "compliance", "सर्टिफिकेशन", "प्रमाणित", "मान्यता"] } },
+  { id: "integration", phrases: { en: ["sdk", "integration", "api", "developer", "protocol", "software support"], hi: ["sdk", "integration", "api", "developer", "protocol", "सॉफ्टवेयर सपोर्ट"], mr: ["sdk", "integration", "api", "developer", "protocol", "सॉफ्टवेअर सपोर्ट"] } },
+  { id: "overview", phrases: { en: ["what is", "tell me about", "overview", "summary", "about", "explain", "describe"], hi: ["क्या है", "बताओ", "overview", "summary", "about", "बताइए", "समझाओ", "जानकारी"], mr: ["काय आहे", "सांगा", "overview", "summary", "about", "सांगा", "समजावा", "माहिती"] } },
 ];
 
 const FIELD_BY_INTENT = {
@@ -811,6 +900,20 @@ const suggestProductsByTopic = (text, lang) => {
   return best.topic.productIds.map((id) => byId[id]).filter(Boolean);
 };
 
+// Detects if the query explicitly names a product category (e.g. "micro ATM", "fingerprint scanner").
+// Returns the matching CATEGORY_FILTERS entry, or null if no match is found.
+// Used to lock recommendation candidates to the correct product group.
+const detectCategory = (text, lang) => {
+  const normalized = normalizeText(text);
+  for (const cat of CATEGORY_FILTERS) {
+    const phrases = cat.patterns[lang] || cat.patterns.en || [];
+    for (const phrase of phrases) {
+      if (normalized.includes(normalizeText(phrase))) return cat;
+    }
+  }
+  return null;
+};
+
 const pickActiveProduct = (explicitMatches, currentProductId, history = []) => {
   if (explicitMatches.length) return explicitMatches[0].product;
   if (currentProductId && byId[currentProductId]) return byId[currentProductId];
@@ -906,16 +1009,17 @@ const getReasonBullets = (product) => {
   return Array.from(new Set(candidates)).slice(0, 3);
 };
 
-const recommendProducts = (products, lang) => {
+const recommendProducts = (products, lang, categoryLabel = "") => {
   const [first, second] = products.filter(Boolean);
   if (!first) return (T[lang] || T.en).unknown;
 
   const firstReasons = getReasonBullets(first);
   const secondHook = second ? compactReason((second.features || [])[0] || second.facts?.biometric || second.facts?.payments || getLangText(second.overview, lang)) : "";
+  const label = categoryLabel || first.category || "option";
 
   if (lang === "hi") {
     return [
-      `हर use case के लिए एक ही POS सबसे अच्छा नहीं होता, लेकिन overall choice के रूप में ${first.name} strong option लगता है।`,
+      `हर use case के लिए एक ही ${label} सबसे अच्छा नहीं होता, लेकिन overall choice के रूप में ${first.name} strong option लगता है।`,
       firstReasons.length ? `क्योंकि इसमें ${firstReasons.join(", ")} मिलता है।` : getLangText(first.overview, lang),
       second ? `${second.name} भी अच्छा विकल्प है, खासकर अगर आपकी priority ${secondHook} है।` : "",
     ].filter(Boolean).join(" ");
@@ -923,14 +1027,14 @@ const recommendProducts = (products, lang) => {
 
   if (lang === "mr") {
     return [
-      `प्रत्येक use case साठी एकच POS सर्वोत्तम नसतो, पण all-round choice म्हणून ${first.name} मजबूत पर्याय वाटतो।`,
+      `प्रत्येक use case साठी एकच ${label} सर्वोत्तम नसतो, पण all-round choice म्हणून ${first.name} मजबूत पर्याय वाटतो.`,
       firstReasons.length ? `कारण यात ${firstReasons.join(", ")} मिळते.` : getLangText(first.overview, lang),
       second ? `${second.name} हाही चांगला पर्याय आहे, विशेषतः तुमची priority ${secondHook} असेल तर.` : "",
     ].filter(Boolean).join(" ");
   }
 
   return [
-    `There is not one universally best POS for every use case, but ${first.name} looks like the strongest all-round choice.`,
+    `There is no single universally best ${label} for every use case, but ${first.name} looks like the strongest all-round choice.`,
     firstReasons.length ? `That is because it offers ${firstReasons.join(", ")}.` : getLangText(first.overview, lang),
     second ? `${second.name} is also a strong alternative if your priority is ${secondHook}.` : "",
   ].filter(Boolean).join(" ");
@@ -964,10 +1068,20 @@ const buildSmartLocalReply = ({ text, lang, history = [], currentProductId = nul
   const topicMatches = suggestProductsByTopic(text, lang);
 
   if (intent === "recommend") {
-    const candidates = (topProducts.length ? topProducts : topicMatches).slice(0, 3);
+    // If the user names a specific category, lock candidates to that category only.
+    // This prevents cross-category mixing (e.g. fingerprint sensors showing up for micro ATM queries).
+    const detectedCategory = detectCategory(text, lang);
+    let candidates;
+    let categoryLabel = "";
+    if (detectedCategory) {
+      candidates = detectedCategory.productIds.map((id) => byId[id]).filter(Boolean).slice(0, 3);
+      categoryLabel = detectedCategory.label[lang] || detectedCategory.label.en || "";
+    } else {
+      candidates = (topProducts.length ? topProducts : topicMatches).slice(0, 3);
+    }
     if (candidates.length) {
       return {
-        answer: recommendProducts(candidates, lang),
+        answer: recommendProducts(candidates, lang, categoryLabel),
         lang,
         productId: candidates[0].id,
         mode: "local",
@@ -1033,9 +1147,42 @@ const buildApiPayload = ({ text, lang, history, currentProductId }) => {
   const intent = detectIntent(text, lang);
   const explicitProducts = detectProducts(text, lang).slice(0, 4).map((item) => item.product);
   const topicProducts = suggestProductsByTopic(text, lang).slice(0, 4);
-  const candidateProducts = explicitProducts.length ? explicitProducts : topicProducts;
   const advisoryMode = intent === "recommend" ? "recommendation" : "default";
   const apiCurrentProductId = advisoryMode === "recommendation" && !explicitProducts.length ? null : currentProductId;
+
+  // For recommendation queries, detect the category first.
+  // If a category is detected, lock candidates to that category only — this prevents the worker
+  // from mixing products across categories (e.g. fingerprint sensors in a Micro ATM recommendation).
+  const detectedCategory = detectCategory(text, lang);
+  let candidateProducts;
+  if (advisoryMode === "recommendation" && detectedCategory) {
+    candidateProducts = detectedCategory.productIds.map((id) => byId[id]).filter(Boolean);
+  } else if (explicitProducts.length) {
+    candidateProducts = explicitProducts;
+  } else {
+    candidateProducts = topicProducts;
+  }
+
+  // Pre-extract the specific fact for the active product so the worker can surface it directly.
+  const productMatches = detectProducts(text, lang);
+  const activeProduct = pickActiveProduct(productMatches, apiCurrentProductId, history);
+  let extractedFact = "";
+  if (activeProduct && intent) {
+    const field = FIELD_BY_INTENT[intent];
+    if (field && !["overview", "features", "applications"].includes(field)) {
+      const value = activeProduct.facts?.[field];
+      if (value) {
+        extractedFact = `${activeProduct.name} — ${field}: ${value}`;
+      }
+    } else if (field === "features" && activeProduct.features?.length) {
+      extractedFact = `${activeProduct.name} — features: ${activeProduct.features.join("; ")}`;
+    } else if (field === "applications" && activeProduct.applications?.length) {
+      extractedFact = `${activeProduct.name} — applications: ${activeProduct.applications.join("; ")}`;
+    } else if (field === "overview") {
+      const ov = getLangText(activeProduct.overview, lang);
+      if (ov) extractedFact = `${activeProduct.name} — overview: ${ov}`;
+    }
+  }
 
   return {
     message: text,
@@ -1043,6 +1190,8 @@ const buildApiPayload = ({ text, lang, history, currentProductId }) => {
     advisoryMode,
     currentProductId: apiCurrentProductId,
     candidateProductIds: candidateProducts.map((product) => product.id),
+    categoryLabel: detectedCategory ? (detectedCategory.label[lang] || detectedCategory.label.en || "") : "",
+    extractedFact,
     history: (history || []).slice(-8).map((item) => ({ role: item.role, text: item.text, productId: item.productId || null })),
     products: PRODUCTS.map((product) => ({
       id: product.id,
@@ -1155,26 +1304,32 @@ const isWeakApiAnswer = ({ answer, fallback, activeProduct, intent }) => {
 const getAssistantReply = async ({ text, history = [], currentProductId = null, langHint = null }) => {
   const lang = langHint || detectLang(text);
   const intent = detectIntent(text, lang);
+  // Always compute local fallback – used when API is unavailable or returns a weak answer.
   const fallback = buildSmartLocalReply({ text, lang, history, currentProductId });
-  const productMatches = detectProducts(text, lang);
-  const activeProduct = pickActiveProduct(productMatches, currentProductId, history);
 
-  if (shouldUseLocalFirst({ text, lang, history, currentProductId })) {
+  // Compare and price are deterministic – the local engine handles them perfectly.
+  // Everything else (facts, overview, recommendations, open questions) goes to the AI
+  // so the answer is properly framed in natural language using the full product context.
+  if (intent === "compare" || intent === "price") {
     return fallback;
   }
 
   if (!API_URL) return fallback;
 
   try {
+    const payload = buildApiPayload({ text, lang, history, currentProductId });
     const response = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(buildApiPayload({ text, lang, history, currentProductId })),
+      body: JSON.stringify(payload),
     });
 
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     if (!data?.answer) return fallback;
+
+    const productMatches = detectProducts(text, lang);
+    const activeProduct = pickActiveProduct(productMatches, currentProductId, history);
 
     if (isWeakApiAnswer({ answer: data.answer, fallback, activeProduct, intent })) {
       return fallback;

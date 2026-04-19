@@ -22,6 +22,8 @@ export default {
       const advisoryMode = body.advisoryMode === "recommendation" ? "recommendation" : "default";
       const candidateProductIds = Array.isArray(body.candidateProductIds) ? body.candidateProductIds : [];
       const currentProductId = body.currentProductId || null;
+      const extractedFact = String(body.extractedFact || "").trim();
+      const categoryLabel = String(body.categoryLabel || "").trim();
       const message = String(body.message || "").trim();
 
       if (!message) {
@@ -35,7 +37,7 @@ export default {
         candidateProductIds,
         advisoryMode,
       });
-      const system = buildSystemPrompt(language, contextProducts, advisoryMode);
+      const system = buildSystemPrompt(language, contextProducts, advisoryMode, extractedFact, categoryLabel);
       const messages = [
         { role: "system", content: system },
         ...history.map((item) => ({
@@ -128,7 +130,7 @@ function selectProducts({ message, products, currentProductId, candidateProductI
   return products.filter((product) => product.id === currentProductId).slice(0, 1);
 }
 
-function buildSystemPrompt(language, products, advisoryMode = "default") {
+function buildSystemPrompt(language, products, advisoryMode = "default", extractedFact = "", categoryLabel = "") {
   const langInstruction =
     language === "hi"
       ? "Reply in Hindi."
@@ -140,32 +142,52 @@ function buildSystemPrompt(language, products, advisoryMode = "default") {
     ? products.map((product) => JSON.stringify(product)).join("\n")
     : "No product matched with high confidence.";
 
+  // Explicit product allowlist — the single most effective guard against the model
+  // drawing on training knowledge about products not in the current context.
+  // Small models (≤8B) often ignore soft instructions like "answer only from context"
+  // but reliably respect a hard named list.
+  const allowedNames = products.map((p) => p.name).join(", ");
+  const allowlistBlock = allowedNames
+    ? `ALLOWED PRODUCTS: You may ONLY mention or compare these products: ${allowedNames}.\nDo NOT mention any other product by name, even if you know it from training data.`
+    : "";
+
+  const factBlock = extractedFact
+    ? `VERIFIED FACT (use this directly, never contradict it):\n${extractedFact}`
+    : "";
+
+  // When a category is detected, reinforce the scope restriction with human-readable framing.
+  const categoryBlock = categoryLabel
+    ? `The user is asking about ${categoryLabel} products. Only discuss products from the allowed list above.`
+    : "";
+
   const recommendationInstructions = advisoryMode === "recommendation"
     ? [
         "This is a recommendation-style question such as best, suitable, or which one should I choose.",
+        "Do NOT recommend products outside the allowed list.",
         "Do not answer with a single raw specification.",
-        "Do not default to the last discussed product unless it is clearly the best fit from the provided context.",
-        "If the question is broad, explicitly say there is no single universally best option.",
-        "Recommend the most suitable option from the provided context and give 2 to 4 concrete reasons tied to features, facts, certifications, battery, connectivity, printer, biometrics, or payments.",
-        "Also mention one alternative for a different need when relevant.",
-        "Keep the answer moderately detailed but still easy to read.",
+        "If the question is broad, say there is no single universally best option.",
+        "Recommend the most suitable option from the allowed products and give 2 to 4 concrete reasons tied to features, facts, certifications, battery, connectivity, printer, biometrics, or payments.",
+        "Mention one alternative from the allowed list for a different need when relevant.",
+        "Keep the answer moderately detailed but easy to read.",
       ]
     : [];
 
   return [
     "You are an Evolute Fintech product assistant.",
     langInstruction,
-    "Answer only from the provided product context.",
-    "Never say information is missing if it is present in the provided product context.",
-    "For factual product questions like weight, battery, dimensions, connectivity, printer, OS, processor, memory, certifications, features, or applications, answer directly from the matched product facts.",
-    "If a product is matched, stay with that product and do not switch to another product unless the user explicitly asks for it.",
+    allowlistBlock,
+    factBlock,
+    categoryBlock,
+    "Answer only from the product context provided below. Never invent facts.",
+    "For factual questions like weight, battery, dimensions, connectivity, printer, OS, processor, memory, certifications, features, or applications — answer directly from the context. Frame the answer in natural, helpful language.",
+    "If a product is matched, stay with that product and do not switch unless the user explicitly asks.",
     ...recommendationInstructions,
-    "If the answer is not in context, say so briefly and suggest the closest product instead of inventing facts.",
+    "If the answer is not in context, say so briefly instead of inventing facts.",
     "Keep answers practical, accurate, and concise.",
     "When comparing, use bullet-style short sections.",
-    "Relevant product context:",
+    "Product context:",
     context,
-  ].join("\n\n");
+  ].filter(Boolean).join("\n\n");
 }
 
 function extractText(result) {
